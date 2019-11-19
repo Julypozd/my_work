@@ -1,7 +1,7 @@
 import inspect
 import logging
 
-def logfile(LevelLog=logging.DEBUG):
+def logfile(level_log=logging.DEBUG):
     # ADD the name of the class or def to the log
     logger_name = inspect.stack()[1][3]
     #create logger
@@ -10,18 +10,18 @@ def logfile(LevelLog=logging.DEBUG):
     logger.setLevel(logging.DEBUG)
 
     #name and the mode of the file
-    fileHandler = logging.FileHandler("automation.log", mode='a')
+    file_handler = logging.FileHandler("automation.log", mode='a')
 
     #w- Over write on Existing
     #a- append
 
-    fileHandler.setLevel(LevelLog)
+    file_handler.setLevel(level_log)
 
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s',
                                   datefmt='%m/%d/%Y %I:%M:%S %p')
 
-    fileHandler.setFormatter(formatter)
-    logger.addHandler(fileHandler)
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
 
     return logger
 

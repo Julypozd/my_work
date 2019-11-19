@@ -2,7 +2,7 @@ import traceback
 from selenium import webdriver
 import os
 
-class BrowsersSetup():
+class Browsers_setup():
 
     def __init__(self, browser):
 
@@ -11,9 +11,9 @@ class BrowsersSetup():
      Set the PATH on the machine where browser will be executed
     """
 
-    def CrossBrowsers(self):
+    def cross_browsers(self):
 
-        baseURL = "https://..................."
+        base_url = #ENTER URL""
 
         if self.browser == "iexplorer":
             driver = webdriver.Ie()
@@ -30,5 +30,5 @@ class BrowsersSetup():
 
         driver.implicitly_wait(4)
         driver.maximize_window()
-        driver.get(baseURL)
+        driver.get(base_url)
         return driver

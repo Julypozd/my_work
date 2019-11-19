@@ -17,13 +17,13 @@ class Utility(object):
         except InterruptedError:
             traceback.print_stack()
 
-    def getAlphaNumeric(self, length, type='letters'):
+    def get_alpha_numeric(self, length, type='letters'):
         """
         Get random string of characters
 
         Parameters:
             length: Length of string, number of characters string should have
-            type: Type of characters string should have. Default is letters
+            type: Type of characters string should have.
             Provide lower/upper/digits for different types
         """
         alpha_num = ''
@@ -39,57 +39,57 @@ class Utility(object):
             case = string.ascii_letters
         return alpha_num.join(random.choice(case) for i in range(length))
 
-    def getUniqueName(self, charCount=10):
+    def get_unique_name(self, char_count=10):
         """
         Get a unique name
         """
-        return self.getAlphaNumeric(charCount, 'lower')
+        return self.get_alpha_numeric(char_count, 'lower')
 
-    def getUniqueNameList(self, listSize=5, itemLength=None):
+    def get_unique_name_list(self, list_size=5, item_length=None):
         """
         Get a list of valid email ids
 
         Parameters:
-            listSize: Number of names. Default is 5 names in a list
-            itemLength: It should be a list containing number of items equal to the listSize
+            list_size: Number of names. Default is 5 names in a list
+            item_length: It should be a list containing number of items equal to the listSize
                         This determines the length of the each item in the list -> [1, 2, 3, 4, 5]
         """
-        nameList = []
-        for i in range(0, listSize):
-            nameList.append(self.getUniqueName(itemLength[i]))
-        return nameList
+        name_list = []
+        for i in range(0, list_size):
+            name_list.append(self.get_unique_name(item_length[i]))
+        return name_list
 
-    def verifyTextContain(self, actualText, expectedText):
+    def verify_text_contain(self, actual_text, expected_text):
 
-        self.mylog.info("Actual text is:" + actualText)
-        self.mylog.info("Expected text is:" + expectedText)
-        if expectedText.lower() in actualText.lower():
+        self.mylog.info("Actual text is:" + actual_text)
+        self.mylog.info("Expected text is:" + expected_text)
+        if expected_text.lower() in actual_text.lower():
             self.mylog.info("Verification Successful")
             return True
         else:
-            self.mylog.info("Verification FAILED with this text" + actualText)
+            self.mylog.info("Verification FAILED with this text" + actual_text)
             return False
 
-    def verifyTextMatch(self, actualText, expectedText):
+    def verify_text_match(self, actual_text, expected_text):
 
-        self.mylog.info("Actual text is" + actualText)
-        self.mylog.info("Expected text is " + expectedText)
-        if actualText.lower() == expectedText.lower():
+        self.mylog.info("Actual text is" + actual_text)
+        self.mylog.info("Expected text is " + expected_text)
+        if actual_text.lower() == expected_text.lower():
             self.mylog.info("Verification Successful")
             return True
         else:
-            self.mylog.info("Verification FAILED with this text" + actualText)
+            self.mylog.info("Verification FAILED with this text" + actual_text)
             return False
 
-    def verifyListMatch(self, expectedList, actualList):
+    def verify_list_match(self, expected_list, actual_list):
 
-        return set(expectedList) == set(actualList)
+        return set(expected_list) == set(actual_list)
 
-    def verifyListContains(self, expectedList, actualList):
+    def verify_list_contains(self, expected_list, actual_list):
 
-        length = len(expectedList)
+        length = len(expected_list)
         for x in range(0, length):
-            if expectedList[x] not in actualList:
+            if expected_list[x] not in actual_list:
                 return False
         else:
             return True

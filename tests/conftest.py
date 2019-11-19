@@ -1,19 +1,19 @@
 import pytest
-from base.crossbrowsers import BrowsersSetup
+from base.crossbrowsers import Browsers_setup
 #from pages.home.loginpage import LoginPage
 
 @pytest.yield_fixture()
-def setUp():
+def set_up():
     print("Running method level setUp")
     yield
     print("Running method level tearDown")
 
 
 @pytest.yield_fixture(scope="class")
-def oneTimeSetUp(request, browser):
+def one_time_setup(request, browser):
     print("Running one time setUp")
-    brw = BrowsersSetup(browser)
-    driver = brw.CrossBrowsers()
+    brw = Browsers_setup(browser)
+    driver = brw.cross_browsers()
     #lp = LoginPage(driver)
     #lp.login(email="test@email.com", password="abcabc")
 
@@ -25,7 +25,7 @@ def oneTimeSetUp(request, browser):
 
 def pytest_addoption(parser):
     parser.addoption("--browser")
-    parser.addoption("--OStype", help="Type of operating system")
+    parser.addoption("--OStype", help="Type operating system")
 
 @pytest.fixture(scope="session")
 def browser(request):
