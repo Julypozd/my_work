@@ -12,7 +12,7 @@ class Base_methods(Custom_driver):
         self.util = Utility()
 
 
-    def verifyTitle(self, title_to_verify):
+    def verify_title(self, title_to_verify):
 
         try:
             actual_title = self.get_title()
