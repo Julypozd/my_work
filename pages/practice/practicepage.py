@@ -1,8 +1,9 @@
 import utilities.logfile as logf
 import logging
-from base.base_methods import Base_methods
+from base.basemethods import BaseMethods
 
-class Practice_page(Base_methods):
+
+class PracticePage(BaseMethods):
 
     log = logf.logfile(logging.DEBUG)
 
@@ -10,7 +11,7 @@ class Practice_page(Base_methods):
         super().__init__(driver)
         self.driver = driver
 
-                    # Locators
+    # Locators
     #Practice page link
     _practice_link = "//a[@class='fedora-navbar-link navbar-link']"
     #Radio Buttons
@@ -84,4 +85,3 @@ class Practice_page(Base_methods):
     def verify_selection(self):
         result = self.is_element_present(locator=self._verify_sel, locator_type="xpath")
         return result
-

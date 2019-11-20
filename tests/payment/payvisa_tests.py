@@ -1,5 +1,5 @@
-from pages.payment.payment_page import Payment_page
-from pages.home.login_page import Login_page
+from pages.payment.paymentpage import PaymentPage
+from pages.home.loginpage import LoginPage
 from utilities.teststatus import TestStatus
 import unittest
 import pytest
@@ -9,8 +9,8 @@ class RegisterCoursesTests(unittest.TestCase):
 
     @pytest.fixture(autouse=True)
     def object_setup(self, one_time_setup):
-        self.courses = Payment_page(self.driver)
-        self.lp= Login_page(self.driver)
+        self.courses = PaymentPage(self.driver)
+        self.lp = LoginPage(self.driver)
         self.ts = TestStatus(self.driver)
 
 

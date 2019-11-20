@@ -10,7 +10,7 @@ import os
 from selenium.webdriver.support.ui import Select
 
 
-class Custom_driver():
+class CustomDriver():
 
     log = log.logfile(logging.DEBUG)
 
@@ -100,38 +100,15 @@ class Custom_driver():
     def send_keys(self, data, locator="", locator_type="id", element=None):
 
         try:
-            def get_text(self, locator="", locator_type="id", element=None, info=""):
-
-                if locator is not None:
+            if locator is not None:
                 element = self.get_element(locator, locator_type)
             element.send_keys(data)
             self.log.info("Sent data: <" + data + "> on element with locator: " + locator +
                           " locator type: " + locator_type)
         except:
             self.log.info("CAN NOT SEND DATA on the element with locator: " + locator +
-                  " locator type: " + locator_type)
+                          " locator type: " + locator_type)
             print_stack()
-
-
-
-        try:
-            if locator is not None:
-                self.log.debug("In locator condition")
-                element = self.get_element(locator, locator_type)
-            self.log.debug("Before finding text")
-            text = element.text
-            self.log.debug("After finding element, size is: " + str(len(text)))
-            if len(text) == 0:
-                text = element.get_attribute("inner text")
-            if len(text) != 0:
-                self.log.info(" Getting text on element :: " +  info)
-                self.log.info("The text is :: '" + text + "'")
-                text = text.strip()
-        except:
-            self.log.error("FAILED to get text on element " + info)
-            print_stack()
-            text = None
-        return text
 
     def is_element_present(self, locator="", locator_type="id", element=None):
 
@@ -269,15 +246,15 @@ class Custom_driver():
                 is_el_selected = element.is_selected()
                 if is_el_selected == True:
                     self.log.info("Element is selected with locator: " + locator +
-                              " locator type: " + locator_type)
+                              "locator type: " + locator_type)
                     return True
                 else:
                     self.log.info("Element is not selected with locator: " + locator +
-                              " locator type: " + locator_type)
+                              "locator type: " + locator_type)
                     return False
             else:
                 self.log.info("Element is not selected with locator: " + locator +
-                             " locator type: " + locator_type)
+                             "locator type: " + locator_type)
         except:
             print("Element NOT FOUND")
             return False
@@ -293,3 +270,34 @@ class Custom_driver():
         else:
             self.log.info("Element: " + element + "is NOT selected")
             return False
+
+    def get_text(self, locator="", locator_type="id", element=None, info=""):
+
+            try:
+                if locator is not None:
+                    self.log.debug("In locator condition")
+                    element = self.get_element(locator, locator_type)
+                self.log.debug("Before finding text")
+                text = element.text
+                self.log.debug("After finding element, size is: " + str(len(text)))
+                if len(text) == 0:
+                    text = element.get_attribute("inner text")
+                if len(text) != 0:
+                    self.log.info(" Getting text on element :: " +  info)
+                    self.log.info("The text is :: '" + text + "'")
+                    text = text.strip()
+            except:
+                self.log.error("FAILED to get text on element " + info)
+                print_stack()
+                text = None
+            return text
+
+    def go_back_page(self):
+        return self.driver.back()
+
+    def go_forward_page(self):
+        return self.driver.forward()
+
+    def refresh_page(self):
+        return self.driver.refresh()
+

@@ -1,16 +1,15 @@
-from base.custom_driver import Custom_driver
+from base.customdriver import CustomDriver
 from traceback import print_stack
 from utilities.utility import Utility
 
 
-class Base_methods(Custom_driver):
+class BaseMethods(CustomDriver):
 
     def __init__(self, driver):
 
-        super(Base_methods, self).__init__(driver)
+        super(BaseMethods, self).__init__(driver)
         self.driver = driver
         self.util = Utility()
-
 
     def verify_title(self, title_to_verify):
 

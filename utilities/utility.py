@@ -4,6 +4,7 @@ import random, string
 import utilities.logfile as log
 import logging
 
+
 class Utility(object):
 
     mylog = log.logfile(logging.INFO)
@@ -18,6 +19,7 @@ class Utility(object):
             traceback.print_stack()
 
     def get_alpha_numeric(self, length, type='letters'):
+
         """
         Get random string of characters
 

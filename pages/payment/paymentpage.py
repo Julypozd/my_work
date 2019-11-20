@@ -1,9 +1,10 @@
 import utilities.logfile as logf
 import logging
-from base.base_methods import Base_methods
+from base.basemethods import BaseMethods
 from selenium.webdriver.support.ui import Select
 
-class Payment_page(Base_methods):
+
+class PaymentPage(BaseMethods):
 
     log = logf.logfile(logging.DEBUG)
 
@@ -13,23 +14,22 @@ class Payment_page(Base_methods):
 
     # Locators
     _search_field = "search-payment"
-    _search_button= "search-course-button"
+    _search_button = "search-course-button"
     _course_name = "//div[contains(text(),'JavaScript for beginners')]" #JavaScript for beginners
     _all_courses = "//div[@class='course-listing-title']"
-    _enroll_button="enroll-button-top"
+    _enroll_button = "enroll-button-top"
     _payment_method = "//button[@class='dropbtn minimal']"
-    _all_pay_methods= "option-container"
-    _visa_= "//div[@id='option-container']//a[1]"
-    _pay_pal_= "//div[@id='option-container']//a[2]"
+    _all_pay_methods = "option-container"
+    _visa_ = "//div[@id='option-container']//a[1]"
+    _pay_pal_ = "//div[@id='option-container']//a[2]"
     #iframes
-    _cc_num= "//input[@aria-label='Credit or debit card number']" #iframe8
-    _cc_exp= 'exp-date' #name #irame9
-    _cc_cvc= 'cvc' #name iframe10
-    _zip_= 'postal' #name iframe11
-
-    _agree_toterms='agreed_to_terms_checkbox'
-    _submit_enroll= "//div[@class='spc__primary-submit']"
-    _paypal_enroll= "confirm-purchase"
+    _cc_num = "//input[@aria-label='Credit or debit card number']" #iframe8
+    _cc_exp = 'exp-date' #name #irame9
+    _cc_cvc = 'cvc' #name iframe10
+    _zip_ = 'postal' #name iframe11
+    _agree_toterms ='agreed_to_terms_checkbox'
+    _submit_enroll = "//div[@class='spc__primary-submit']"
+    _paypal_enroll = "confirm-purchase"
 
     def enter_course_name(self, name):
         self.send_keys(name, self._search_field, locator_type="id")
@@ -107,19 +107,10 @@ class Payment_page(Base_methods):
         self.click_agreeterms()
 
     def verify_enroll_failed(self):
-        result1= self.is_enabled(locator=self._submit_enroll, locator_type="xpath",
+        result1 = self.is_enabled(locator=self._submit_enroll, locator_type="xpath",
                                  info="Submit payment visa")
         return result1
 
     def paypal_pass(self):
-        result_pp= self.is_enabled(locator=self._paypal_enroll, info="Submit paypal payment")
+        result_pp = self.is_enabled(locator=self._paypal_enroll, info="Submit paypal payment")
         return result_pp
-
-
-
-
-
-
-
-
-

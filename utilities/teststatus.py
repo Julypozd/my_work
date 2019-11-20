@@ -1,9 +1,10 @@
 import utilities.logfile as logf
 import logging
-from base.custom_driver import Custom_driver
+from base.customdriver import CustomDriver
 from traceback import print_stack
 
-class TestStatus(Custom_driver):
+
+class TestStatus(CustomDriver):
 
     log = logf.logfile(logging.INFO)
 
@@ -46,4 +47,3 @@ class TestStatus(Custom_driver):
             self.log.info(test_name + " ### TEST SUCCESSFUL")
             self.result_list.clear()
             assert True == True
-

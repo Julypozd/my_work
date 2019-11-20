@@ -1,4 +1,4 @@
-from pages.practice.practice_page import Practice_page
+from pages.practice.practicepage import PracticePage
 from utilities.teststatus import TestStatus
 import unittest
 import pytest
@@ -8,7 +8,7 @@ class Practice_tests(unittest.TestCase):
 
     @pytest.fixture(autouse=True)
     def class_setup(self):
-        self.pp = Practice_page(self.driver)
+        self.pp = PracticePage(self.driver)
         self.ts = TestStatus(self.driver)
 
     @pytest.mark.run(order=1)

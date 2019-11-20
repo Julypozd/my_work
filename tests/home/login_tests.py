@@ -1,4 +1,4 @@
-from pages.home.login_page import Login_page
+from pages.home.loginpage import LoginPage
 from utilities.teststatus import TestStatus
 import unittest
 import pytest
@@ -9,7 +9,7 @@ class LoginTests(unittest.TestCase):
 
     @pytest.fixture(autouse=True)
     def class_setup(self):
-        self.lp = Login_page(self.driver)
+        self.lp = LoginPage(self.driver)
         self.ts = TestStatus(self.driver)
 
     @pytest.mark.run(order=1)
@@ -56,3 +56,4 @@ class LoginTests(unittest.TestCase):
         self.ts.mark_final("test_logOut", result3, "logout successfully")
         self.ts.screen_shot("logout successfully")
         assert True
+

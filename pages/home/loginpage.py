@@ -1,8 +1,9 @@
 import utilities.logfile as logf
 import logging
-from base.base_methods import Base_methods
+from base.basemethods import BaseMethods
 
-class Login_page(Base_methods):
+
+class LoginPage(BaseMethods):
 
     log = logf.logfile(logging.DEBUG)
 
@@ -15,10 +16,9 @@ class Login_page(Base_methods):
     _email_field = "user_email"
     _password_field = "user_password"
     _login_button = "//input[@name='commit']"
-    _avatar_logo= "//img[@class='gravatar']"
-    _dropdown_menu= "//li[@class='dropdown open']//ul[@class='dropdown-menu']"
-    _logout= "//a[contains(text(),'Log Out')]"
-
+    _avatar_logo = "//img[@class='gravatar']"
+    _dropdown_menu = "//li[@class='dropdown open']//ul[@class='dropdown-menu']"
+    _logout = "//a[contains(text(),'Log Out')]"
 
     def click_login_link(self):
         self.click_element(self._login_link, locator_type="xpath")
@@ -50,7 +50,7 @@ class Login_page(Base_methods):
         return result
 
     def verify_login_title(self):
-        return self.verifyTitle("Let's Kode it")
+        return self.verify_title("Let's Kode it")
 
     def clear_email_field(self):
         self.get_element(locator=self._email_field, locator_type="id").clear()

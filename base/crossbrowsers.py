@@ -1,8 +1,8 @@
-import traceback
 from selenium import webdriver
 import os
 
-class Browsers_setup():
+
+class BrowsersSetup():
 
     def __init__(self, browser):
 
@@ -13,7 +13,7 @@ class Browsers_setup():
 
     def cross_browsers(self):
 
-        base_url = #ENTER URL""
+        base_url = "................"
 
         if self.browser == "iexplorer":
             driver = webdriver.Ie()
@@ -22,8 +22,8 @@ class Browsers_setup():
         elif self.browser == "chrome":
             driver = webdriver.Chrome()
         elif self.browser == "safari":
-            serverLocation = "/Users/Julia/Desktop/webdriver/selenium-server-standalone-3.141.59.jar"
-            os.environ["SELENIUM_SERVER_JAR"] = serverLocation
+            server_location = "/Users/Julia/Desktop/webdriver/selenium-server-standalone-3.141.59.jar"
+            os.environ["SELENIUM_SERVER_JAR"] = server_location
             driver = webdriver.Safari(quiet=True)
         else:
             driver = webdriver.Chrome()

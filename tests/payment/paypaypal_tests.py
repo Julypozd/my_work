@@ -1,18 +1,18 @@
-from pages.payment.payment_page import Payment_page
-from pages.home.login_page import Login_page
+from pages.payment.paymentpage import PaymentPage
+from pages.home.loginpage import LoginPage
 from utilities.teststatus import TestStatus
 import unittest
 import pytest
+
 
 @pytest.mark.usefixtures("one_time_setup", "set_up")
 class RegisterCoursesTests(unittest.TestCase):
 
     @pytest.fixture(autouse=True)
     def object_setup(self):
-        self.courses = Payment_page(self.driver)
-        self.lp= Login_page(self.driver)
+        self.courses = PaymentPage(self.driver)
+        self.lp= LoginPage(self.driver)
         self.ts = TestStatus(self.driver)
-
 
     def test_invalid_enrollment(self):
         self.lp.login("test@email.com", "abcabc")
@@ -21,6 +21,7 @@ class RegisterCoursesTests(unittest.TestCase):
         self.courses.enter_course_name("JavaScript")
         self.courses.select_course_topay()
         self.courses.enroll_java_paypal()
-        result =self.courses.verify_enroll_failed()
+        result = self.courses.verify_enroll_failed()
         self.ts.mark_final("test_invalidenrollment", result, "Enrollment Failed")
         assert result == True
+
